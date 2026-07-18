@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vina Lash Studio — Lashes, beautifully done · Nanaimo, BC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blush:#f7efe9; --cream:#fbf6f1; --rose:#c98d8d; --gold:#b8965c;
+  --ink:#3d332e; --ink-soft:#6b5d54; --white:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;font-weight:300;color:var(--ink);background:var(--cream);line-height:1.7;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.1}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.eyebrow{font-size:.75rem;letter-spacing:.32em;text-transform:uppercase;color:var(--rose);font-weight:400}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem clamp(1.2rem,4vw,3.5rem);transition:background .4s,box-shadow .4s,padding .4s;}
+nav.scrolled{background:rgba(251,246,241,.86);backdrop-filter:blur(12px);box-shadow:0 1px 24px rgba(61,51,46,.08);padding:.7rem clamp(1.2rem,4vw,3.5rem)}
+.nav-logo img{height:44px;width:auto;background:transparent}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);position:relative;transition:color .3s}
+.nav-links a.simple::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:1px;background:var(--gold);transition:width .35s}
+.nav-links a.simple:hover::after{width:100%}
+.nav-links a.simple:hover{color:var(--rose)}
+.btn{display:inline-block;font-family:'Jost';font-weight:400;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;
+  cursor:pointer;border:none;transition:all .35s ease}
+.btn-solid{background:var(--rose);color:#fff;padding:.85rem 1.7rem;border:1px solid var(--rose)}
+.btn-solid:hover{background:var(--ink);border-color:var(--ink);transform:translateY(-2px);box-shadow:0 10px 24px rgba(61,51,46,.2)}
+.btn-outline{background:transparent;color:var(--ink);padding:.85rem 1.7rem;border:1px solid var(--gold)}
+.btn-outline:hover{background:var(--gold);color:#fff;transform:translateY(-2px)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.4rem}
+.hamburger span{width:26px;height:2px;background:var(--ink);transition:.3s}
+
+/* HERO */
+.hero{position:relative;display:grid;grid-template-columns:1.05fr 1fr;min-height:100vh}
+.hero-img{background:url('img/vina-lash-hero.jpg') center 30%/cover no-repeat;min-height:52vh}
+.hero-text{background:var(--blush);display:flex;flex-direction:column;justify-content:flex-start;
+  padding:clamp(6.5rem,14vh,9rem) clamp(1.5rem,5vw,4.5rem) 3rem}
+.hero-text .eyebrow{margin-bottom:1.2rem}
+.hero-text h1{font-size:clamp(2.8rem,6vw,5rem);color:var(--ink);margin-bottom:1.4rem}
+.hero-text p.sub{font-size:1.02rem;color:var(--ink-soft);max-width:34ch;margin-bottom:1.1rem}
+.hero-text .oneline{font-family:'Cormorant Garamond';font-style:italic;font-size:1.5rem;color:var(--rose);margin-bottom:2rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.hero-phone{font-size:.85rem;letter-spacing:.1em;color:var(--ink-soft)}
+.hero-phone a{color:var(--gold)}
+
+/* SECTIONS */
+section{padding:clamp(4rem,9vw,7rem) clamp(1.2rem,5vw,4rem)}
+.section-head{text-align:center;max-width:760px;margin:0 auto 3.2rem}
+.section-head .eyebrow{display:block;margin-bottom:1rem}
+.section-head h2{font-size:clamp(2.2rem,4.5vw,3.4rem)}
+
+/* ABOUT */
+.about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;max-width:1150px;margin:0 auto}
+.about-visual{position:relative;padding:14px;border:1px solid var(--gold)}
+.about-visual .img-frame{overflow:hidden}
+.about-visual img{transition:transform 1.2s ease;width:100%;height:100%;object-fit:cover}
+.about-visual:hover img{transform:scale(1.06)}
+.about-chip{position:absolute;bottom:-18px;right:24px;background:var(--rose);color:#fff;padding:.6rem 1.2rem;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase}
+.about-text .eyebrow{margin-bottom:1rem}
+.about-text h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:1.4rem}
+.about-text p{color:var(--ink-soft);margin-bottom:1.2rem}
+.about-text .accent{font-family:'Cormorant Garamond';font-style:italic;font-size:1.4rem;color:var(--gold)}
+
+/* TREATMENTS */
+#treatments{background:var(--blush)}
+.treat-group{max-width:1150px;margin:0 auto 3rem}
+.treat-group h3{font-size:1.8rem;color:var(--rose);margin-bottom:1.5rem;letter-spacing:.02em;
+  border-bottom:1px solid rgba(184,150,92,.35);padding-bottom:.6rem}
+.treat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.4rem}
+.treat-card{background:var(--white);padding:1.8rem;cursor:pointer;transition:transform .4s,box-shadow .4s;
+  border:1px solid transparent;position:relative}
+.treat-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(61,51,46,.12);border-color:rgba(184,150,92,.4)}
+.treat-card h4{font-size:1.5rem;margin-bottom:.6rem}
+.treat-card p{font-size:.92rem;color:var(--ink-soft)}
+.treat-card .more{margin-top:1rem;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  display:inline-flex;align-items:center;gap:.4rem;transition:gap .3s}
+.treat-card:hover .more{gap:.8rem}
+
+/* CONTACT */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);max-width:1150px;margin:0 auto;align-items:stretch}
+.contact-info .eyebrow{margin-bottom:1rem}
+.contact-info h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:1.6rem}
+.contact-info .line{margin-bottom:1.1rem}
+.contact-info .label{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);display:block;margin-bottom:.2rem}
+.contact-info a:hover{color:var(--rose)}
+.contact-info .cta-block{margin-top:2rem}
+.map-frame{border:1px solid var(--gold);padding:10px;min-height:340px}
+.map-frame iframe{width:100%;height:100%;min-height:320px;border:0;display:block}
+
+/* FINAL CTA */
+.final-cta{background:var(--rose);color:#fff;text-align:center}
+.final-cta h2{font-size:clamp(2.2rem,5vw,3.6rem);margin-bottom:1rem}
+.final-cta p{max-width:44ch;margin:0 auto 2rem;opacity:.92}
+.final-cta .btn-outline{border-color:#fff;color:#fff}
+.final-cta .btn-outline:hover{background:#fff;color:var(--rose)}
+
+/* FOOTER */
+footer{background:var(--ink);color:#e9ddd4;padding:clamp(3rem,6vw,4.5rem) clamp(1.2rem,5vw,4rem) 2rem}
+.footer-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;max-width:1150px;margin:0 auto 2.5rem}
+.footer-col img{height:50px;margin-bottom:1rem;filter:brightness(0) invert(1);opacity:.9}
+.footer-col p{font-size:.9rem;opacity:.75;max-width:32ch}
+.footer-col h5{font-family:'Jost';font-weight:400;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.5rem;font-size:.9rem}
+.footer-col a{opacity:.8;transition:opacity .3s,color .3s}
+.footer-col a:hover{opacity:1;color:var(--rose)}
+.footer-col .fbtn{background:none;border:none;color:#e9ddd4;font:inherit;font-size:.9rem;cursor:pointer;padding:0;opacity:.8;text-align:left}
+.footer-col .fbtn:hover{color:var(--rose);opacity:1}
+.footer-bottom{text-align:center;font-size:.78rem;opacity:.6;border-top:1px solid rgba(255,255,255,.12);padding-top:1.6rem;max-width:1150px;margin:0 auto}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(61,51,46,.55);backdrop-filter:blur(4px);z-index:200;
+  display:none;align-items:center;justify-content:center;padding:1.2rem;opacity:0;transition:opacity .35s}
+.modal-overlay.open{display:flex;opacity:1}
+.modal{background:var(--cream);max-width:600px;width:100%;max-height:90vh;overflow-y:auto;position:relative;
+  transform:translateY(20px);transition:transform .4s;box-shadow:0 30px 80px rgba(61,51,46,.35)}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal-inner{padding:clamp(2rem,5vw,3.2rem)}
+.modal-close{position:absolute;top:1rem;right:1.2rem;background:none;border:none;font-size:1.8rem;color:var(--ink);cursor:pointer;line-height:1;transition:transform .3s,color .3s}
+.modal-close:hover{transform:rotate(90deg);color:var(--rose)}
+.modal .eyebrow{margin-bottom:.7rem}
+.modal h3{font-size:clamp(1.9rem,4vw,2.6rem);margin-bottom:1rem;color:var(--ink)}
+.modal h4{font-size:1.3rem;color:var(--rose);margin:1.6rem 0 .6rem}
+.modal p{color:var(--ink-soft);margin-bottom:.8rem}
+.modal ul{list-style:none;margin-top:.4rem}
+.modal ul li{padding-left:1.4rem;position:relative;margin-bottom:.5rem;color:var(--ink-soft)}
+.modal ul li::before{content:"✦";position:absolute;left:0;color:var(--gold);font-size:.8rem;top:.2rem}
+.modal .modal-cta{margin-top:1.8rem}
+
+/* FORM */
+.form-group{margin-bottom:1.1rem}
+.form-group label{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.4rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:.8rem 1rem;border:1px solid #ddccc0;background:#fff;
+  font-family:'Jost';font-weight:300;color:var(--ink);font-size:.95rem;transition:border-color .3s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--rose)}
+.form-group textarea{resize:vertical;min-height:90px}
+.form-success{background:var(--blush);border:1px solid var(--gold);padding:2rem;text-align:center;color:var(--ink);
+  font-family:'Cormorant Garamond';font-size:1.4rem;display:none}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important}*{transition:none!important}}
+
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr}
+  .hero-img{order:-1;min-height:38vh}
+  .hero-text{padding:2.5rem clamp(1.5rem,6vw,2.5rem) 3rem}
+  .about-wrap,.contact-wrap{grid-template-columns:1fr}
+  .about-chip{right:14px}
+  .nav-links{position:fixed;top:0;right:0;height:100vh;width:min(78vw,320px);background:var(--cream);flex-direction:column;
+    justify-content:center;gap:2rem;transform:translateX(100%);transition:transform .4s;box-shadow:-12px 0 40px rgba(61,51,46,.2)}
+  .nav-links.open{transform:translateX(0)}
+  .hamburger{display:flex;z-index:110}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#top" class="nav-logo"><img src="img/vina-lash-logo.png" alt="Vina Lash Studio"></a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about" class="simple">About</a></li>
+    <li><a href="#treatments" class="simple">Treatments</a></li>
+    <li><a href="#contact" class="simple">Contact</a></li>
+    <li><a href="https://www.instagram.com/vina_eyelash_studio/" target="_blank" rel="noopener" class="simple">Instagram</a></li>
+    <li><button class="btn btn-solid" onclick="openBooking()">Book Now</button></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-text">
+    <span class="eyebrow">Lash Studio — Nanaimo, BC</span>
+    <h1>Lashes,<br>beautifully done</h1>
+    <p class="sub">A dedicated lash and beauty studio in North Nanaimo — classic, hybrid and volume lash extensions, lifts, brows and microblading, tailored to your eyes by certified lash artist Vina.</p>
+    <p class="oneline">Wake up effortlessly beautiful.</p>
+    <div class="hero-btns">
+      <button class="btn btn-solid" onclick="openBooking()">Book a Consultation</button>
+      <a href="#treatments" class="btn btn-outline">Explore Treatments</a>
+    </div>
+    <p class="hero-phone">Call us · <a href="tel:2507400777">250-740-0777</a></p>
+  </div>
+  <div class="hero-img" role="img" aria-label="Vina Lash Studio"></div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-wrap">
+    <div class="about-visual reveal">
+      <div class="img-frame"><img src="img/vina-lash-about.jpg" alt="Inside Vina Lash Studio"></div>
+      <span class="about-chip">Vina Lash Studio</span>
+    </div>
+    <div class="about-text reveal">
+      <span class="eyebrow">About Vina</span>
+      <h2>Certified lash artistry</h2>
+      <p>Vina Lash Studio is a boutique lash and beauty studio in North Nanaimo, led by certified lash artist and trainer Vina Chen. We specialise in beautiful, long-lasting lash extensions — classic, hybrid and volume — along with lash lifts, brow and lash tinting, microblading and skincare, all in a calm, welcoming space designed around you.</p>
+      <p class="accent">Tailored to your eyes, every time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TREATMENTS -->
+<section id="treatments">
+  <div class="section-head reveal">
+    <span class="eyebrow">Treatments</span>
+    <h2>Crafted for your eyes</h2>
+  </div>
+
+  <div class="treat-group">
+    <h3 class="reveal">Lash Extensions</h3>
+    <div class="treat-grid">
+      <div class="treat-card reveal" data-key="classic">
+        <h4>Classic Full Set</h4>
+        <p>A natural, mascara-like enhancement — one extension per natural lash, tailored to your eye shape.</p>
+        <span class="more">Learn more →</span>
+      </div>
+      <div class="treat-card reveal" data-key="hybrid">
+        <h4>Hybrid Full Set</h4>
+        <p>A soft blend of classic and volume for fuller, textured, natural-looking lashes.</p>
+        <span class="more">Learn more →</span>
+      </div>
+      <div class="treat-card reveal" data-key="volume">
+        <h4>Volume Full Set</h4>
+        <p>Lightweight, fluffy fans for a full, glamorous look.</p>
+        <span class="more">Learn more →</span>
+      </div>
+      <div class="treat-card reveal" data-key="fills">
+        <h4>Lash Fills</h4>
+        <p>Keep your set full and fresh with regular 2-3 week fills.</p>
+        <span class="more">Learn more →</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="treat-group">
+    <h3 class="reveal">Brows &amp; More</h3>
+    <div class="treat-grid">
+      <div class="treat-card reveal" data-key="lift">
+        <h4>Lash Lift &amp; Tint</h4>
+        <p>A lift and tint for naturally curled, darker, wide-awake lashes — no extensions needed.</p>
+        <span class="more">Learn more →</span>
+      </div>
+      <div class="treat-card reveal" data-key="micro">
+        <h4>Microblading</h4>
+        <p>Natural-looking, semi-permanent hairstroke brows shaped to frame your face.</p>
+        <span class="more">Learn more →</span>
+      </div>
+      <div class="treat-card reveal" data-key="tint">
+        <h4>Brow &amp; Lash Tint</h4>
+        <p>Defined, fuller-looking brows and lashes with a soft, natural tint.</p>
+        <span class="more">Learn more →</span>
+      </div>
+      <div class="treat-card reveal" data-key="wax">
+        <h4>Waxing &amp; Skincare</h4>
+        <p>Smooth, gentle waxing and customised skincare to keep you glowing.</p>
+        <span class="more">Learn more →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="contact-info reveal">
+      <span class="eyebrow">Visit Us</span>
+      <h2>Find your way here</h2>
+      <div class="line"><span class="label">Studio</span>137-4750 Rutherford Rd,<br>Nanaimo, BC V9T 4K6</div>
+      <div class="line"><span class="label">Phone</span><a href="tel:2507400777">250-740-0777</a></div>
+      <div class="line"><span class="label">Instagram</span><a href="https://www.instagram.com/vina_eyelash_studio/" target="_blank" rel="noopener">@vina_eyelash_studio</a></div>
+      <div class="cta-block"><button class="btn btn-solid" onclick="openBooking()">Book an Appointment</button></div>
+    </div>
+    <div class="map-frame reveal">
+      <iframe src="https://www.google.com/maps?q=4750%20Rutherford%20Rd%2C%20Nanaimo%2C%20BC&output=embed" loading="lazy" title="Map to Vina Lash Studio"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="reveal">
+    <h2>Ready for beautiful lashes?</h2>
+    <p>Book your consultation and let Vina tailor the perfect look to your eyes.</p>
+    <button class="btn btn-outline" onclick="openBooking()">Book Now</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-col">
+      <img src="img/vina-lash-logo.png" alt="Vina Lash Studio">
+      <p>Boutique lash &amp; beauty studio in North Nanaimo. Tailored to your eyes, every time.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Explore</h5>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#treatments">Treatments</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button class="fbtn" onclick="openBooking()">Book Now</button></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li>137-4750 Rutherford Rd,<br>Nanaimo, BC V9T 4K6</li>
+        <li><a href="tel:2507400777">250-740-0777</a></li>
+        <li><a href="https://www.instagram.com/vina_eyelash_studio/" target="_blank" rel="noopener">@vina_eyelash_studio</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Vina Lash Studio. All rights reserved.</div>
+</footer>
+
+<!-- TREATMENT MODAL -->
+<div class="modal-overlay" id="treatModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('treatModal')">&times;</button>
+    <div class="modal-inner" id="treatContent"></div>
+  </div>
+</div>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="bookModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('bookModal')">&times;</button>
+    <div class="modal-inner">
+      <span class="eyebrow">Booking Enquiry</span>
+      <h3>Book your appointment</h3>
+      <p>Share a few details and we'll be in touch to confirm your visit.</p>
+      <form id="bookForm">
+        <div class="form-group"><label>Name</label><input type="text" required></div>
+        <div class="form-group"><label>Email</label><input type="email" required></div>
+        <div class="form-group"><label>Phone</label><input type="tel" required></div>
+        <div class="form-group"><label>Treatment</label>
+          <select id="treatSelect" required>
+            <option value="" disabled selected>Select a treatment…</option>
+            <optgroup label="Lash Extensions">
+              <option>Classic Full Set</option>
+              <option>Hybrid Full Set</option>
+              <option>Volume Full Set</option>
+              <option>Lash Fills</option>
+            </optgroup>
+            <optgroup label="Brows &amp; More">
+              <option>Lash Lift &amp; Tint</option>
+              <option>Microblading</option>
+              <option>Brow &amp; Lash Tint</option>
+              <option>Waxing &amp; Skincare</option>
+            </optgroup>
+            <option>Not sure — consultation</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Message</label><textarea placeholder="Tell us about the look you'd love…"></textarea></div>
+        <button type="submit" class="btn btn-solid" style="width:100%">Send Enquiry</button>
+      </form>
+      <div class="form-success" id="bookSuccess">Thank you — we will be in touch shortly to confirm your appointment.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// TREATMENT DATA
+const treatments = {
+  classic:{eyebrow:"Lash Extensions",title:"Classic Full Set",
+    overview:"A natural, mascara-like enhancement where a single extension is applied to each of your natural lashes. Perfect for a soft, defined, everyday look that flatters your eye shape without ever feeling heavy.",
+    how:"We map your lashes to your unique eye shape, then carefully isolate and bond one premium extension to each natural lash — no crowding, no clumping. The result is length and definition that looks like your own lashes, only better.",
+    benefits:["Effortless, natural definition — like mascara without the effort","Custom lash mapping for your eye shape","Lightweight and comfortable for all-day wear","Beautiful straight-out-of-bed mornings"]},
+  hybrid:{eyebrow:"Lash Extensions",title:"Hybrid Full Set",
+    overview:"A curated mix of classic single lashes and lightweight volume fans, giving you fuller, textured lashes with a soft, natural finish. Ideal if you love the definition of classic but want a touch more density.",
+    how:"Vina blends individual classic extensions with handmade volume fans across your lash line, layering texture and depth for a naturally full, fluffy result that still reads soft and wearable.",
+    benefits:["The best of classic and volume in one set","Adds subtle density and dimension","Softly fills sparse areas along the lash line","Versatile — everyday or dressed-up"]},
+  volume:{eyebrow:"Lash Extensions",title:"Volume Full Set",
+    overview:"Lightweight, handmade fans of ultra-fine extensions create a full, fluffy, glamorous look with real impact — while staying gentle on your natural lashes.",
+    how:"Multiple feather-light extensions are fanned and applied to each natural lash, building rich density and a dark, lush lash line. Every fan is crafted to your desired fullness, from soft volume to full glam.",
+    benefits:["Maximum fullness and dramatic impact","Surprisingly lightweight and comfortable","Deep, defined lash line without mascara","Customisable from soft to bold"]},
+  fills:{eyebrow:"Lash Extensions",title:"Lash Fills",
+    overview:"Regular maintenance appointments to keep your lash set looking fresh, full and beautiful as your natural lashes complete their growth cycle.",
+    how:"Every 2–3 weeks, we gently remove any grown-out or loosened extensions and replenish with new ones, restoring your set to its full, freshly-done finish. Booking regular fills protects the longevity and health of your lashes.",
+    benefits:["Keeps your set looking freshly done","Recommended every 2–3 weeks","More affordable than a new full set","Maintains lash health and shape"]},
+  lift:{eyebrow:"Brows & More",title:"Lash Lift & Tint",
+    overview:"A lift and tint that curls and darkens your own natural lashes for a bright, wide-awake look — with no extensions and no daily mascara required.",
+    how:"Your natural lashes are gently set onto a shaped silicone shield to create a beautiful upward curl, then tinted to add depth and darkness. Results last through your natural lash cycle, typically around six to eight weeks.",
+    benefits:["Curled, darker lashes using your own hair","No extensions or daily maintenance","Wonderfully low-fuss and long-lasting","Opens and brightens the eyes"]},
+  micro:{eyebrow:"Brows & More",title:"Microblading",
+    overview:"Semi-permanent, natural-looking hairstroke brows designed and shaped to frame your face — ideal for sparse, over-plucked or uneven brows.",
+    how:"After a personalised consultation to map your ideal shape and colour, fine hairstrokes are gently placed to mimic natural brow hairs. A follow-up perfecting session ensures crisp, even, long-lasting results.",
+    benefits:["Natural, realistic hairstroke definition","Shaped to complement your features","Wake up with perfect brows every day","Semi-permanent, fade-friendly results"]},
+  tint:{eyebrow:"Brows & More",title:"Brow & Lash Tint",
+    overview:"A soft, natural tint that adds depth to your brows and lashes for a defined, fuller-looking finish — quick, gentle and instantly flattering.",
+    how:"A gentle tint is applied to brows and/or lashes, richening their colour and creating the appearance of more density. Perfect on its own or paired with a lash lift for an even more polished look.",
+    benefits:["Defined, fuller-looking brows and lashes","Soft, natural depth of colour","Quick treatment with instant results","Pairs beautifully with a lash lift"]},
+  wax:{eyebrow:"Brows & More",title:"Waxing & Skincare",
+    overview:"Smooth, gentle waxing and customised skincare treatments to keep your skin refined, radiant and glowing.",
+    how:"We tailor each waxing and skincare service to your skin's needs, using gentle techniques and quality products so you leave feeling smooth, fresh and cared for.",
+    benefits:["Gentle, careful waxing","Customised to your skin","Smooth, refined finish","A glowing, cared-for complexion"]}
+};
+
+const treatModal=document.getElementById('treatModal');
+const treatContent=document.getElementById('treatContent');
+document.querySelectorAll('.treat-card').forEach(c=>{
+  c.addEventListener('click',()=>{
+    const t=treatments[c.dataset.key];
+    treatContent.innerHTML=`
+      <span class="eyebrow">${t.eyebrow}</span>
+      <h3>${t.title}</h3>
+      <p>${t.overview}</p>
+      <h4>What to expect</h4>
+      <p>${t.how}</p>
+      <h4>Benefits</h4>
+      <ul>${t.benefits.map(b=>`<li>${b}</li>`).join('')}</ul>
+      <div class="modal-cta"><button class="btn btn-solid" onclick="closeModal('treatModal');openBooking('${t.title.replace(/'/g,"")}')">Book this treatment</button></div>`;
+    openModal('treatModal');
+  });
+});
+
+// MODAL HELPERS
+function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
+function openBooking(pre){
+  openModal('bookModal');
+  document.getElementById('bookForm').style.display='block';
+  document.getElementById('bookSuccess').style.display='none';
+  if(pre){
+    const sel=document.getElementById('treatSelect');
+    [...sel.options].forEach(o=>{if(o.text===pre)sel.value=o.value;});
+  }
+}
+document.querySelectorAll('.modal-overlay').forEach(o=>{
+  o.addEventListener('click',e=>{if(e.target===o)closeModal(o.id);});
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(m=>closeModal(m.id));});
+
+// BOOKING FORM
+document.getElementById('bookForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  e.target.style.display='none';
+  document.getElementById('bookSuccess').style.display='block';
+});
+
+// NAV SCROLL
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40);});
+
+// HAMBURGER
+const hb=document.getElementById('hamburger'),nl=document.getElementById('navLinks');
+hb.addEventListener('click',()=>nl.classList.toggle('open'));
+nl.querySelectorAll('a,button').forEach(el=>el.addEventListener('click',()=>nl.classList.remove('open')));
+
+// REVEAL
+const io=new IntersectionObserver((ents)=>{
+  ents.forEach((en,i)=>{if(en.isIntersecting){setTimeout(()=>en.target.classList.add('in'),i*80);io.unobserve(en.target);}});
+},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+<!-- ===== POLISH LAYER (inject before <style id="nav-scrim-fix">
+nav{background:linear-gradient(to bottom,rgba(247,242,234,.72),rgba(247,242,234,0))}
+nav.scrolled{background:rgba(247,242,234,.9) !important}
+nav .nav-links a,nav .navlinks a{text-shadow:0 1px 12px rgba(247,242,234,.92)}
+</style>
+</body>) — custom cursor + refined hover/motion ===== -->
+<style id="polish-layer">
+@media (hover:hover) and (pointer:fine){
+  /* custom cursor: a fast dot + a lagging ring, blend against any background */
+  * { cursor: none !important; }
+  #pl-dot,#pl-ring{position:fixed;top:0;left:0;z-index:2147483647;pointer-events:none;border-radius:50%;
+    mix-blend-mode:difference;will-change:transform;transform:translate3d(-50%,-50%,0);}
+  #pl-dot{width:7px;height:7px;background:#fff;transition:width .25s ease,height .25s ease,opacity .3s;}
+  #pl-ring{width:34px;height:34px;border:1px solid rgba(255,255,255,.85);
+    transition:width .3s cubic-bezier(.16,1,.3,1),height .3s cubic-bezier(.16,1,.3,1),opacity .3s,background .3s;}
+  /* over a button/link the ring collapses + fades INTO the element (no big ballooning circle) */
+  #pl-ring.hot{width:9px;height:9px;opacity:0;border-color:rgba(255,255,255,0);background:transparent;}
+  #pl-dot.hot{width:9px;height:9px;opacity:.9;}
+  #pl-ring.down{width:26px;height:26px;}
+}
+/* ===== HERO HARD RULES (Reza 2026-07-17) — apply to every landing ===== */
+.hero{min-height:auto !important;align-items:stretch !important;}
+.hero-text{justify-content:center !important;padding-top:clamp(118px,15vh,156px) !important;padding-bottom:clamp(58px,8vh,84px) !important;}
+.hero-img{min-height:clamp(560px,78vh,760px) !important;}
+.hero + section,.hero + .about,header.hero + section{padding-top:clamp(50px,6vw,80px) !important;}
+@media (max-width:820px){.hero-img{min-height:44vh !important;}.hero-text{padding-top:clamp(94px,13vh,120px) !important;padding-bottom:44px !important;}}
+/* refined hover motion — additive, does not hide content */
+a,button,.btn{transition:color .35s ease,background-color .35s ease,border-color .35s ease,transform .35s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;}
+.btn:hover{transform:translateY(-2px);}
+/* card lift: target common card patterns from the recipe */
+[class*="card"],[class*="Card"],.member,.t-card,.svc-cat,.review,.testi-card,.blog-card,.rcard,.group .item,.tile{
+  transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .55s ease,border-color .45s ease !important;}
+[class*="card"]:hover,[class*="Card"]:hover,.member:hover,.t-card:hover,.svc-cat:hover,.review:hover,.testi-card:hover,.blog-card:hover,.rcard:hover,.tile:hover{
+  transform:translateY(-6px) !important;box-shadow:0 22px 50px rgba(20,18,15,.13) !important;}
+/* image zoom inside any overflow-clipped container */
+[class*="card"] img,[class*="Card"] img,.member img,.ph img,.about-mark img,.about-visual img,.about-block img,.rph img,.hero-img,figure img{
+  transition:transform .8s cubic-bezier(.16,1,.3,1) !important;}
+[class*="card"]:hover img,[class*="Card"]:hover img,.member:hover img,.ph:hover img,figure:hover img{transform:scale(1.05) !important;}
+/* animated underline on nav links */
+nav a:not(.btn):not(.logo)::after,.nav a:not(.btn):not(.logo)::after,.navlinks a::after{
+  content:"";position:absolute;left:0;bottom:-3px;width:0;height:1px;background:currentColor;opacity:.6;transition:width .4s cubic-bezier(.16,1,.3,1);}
+nav a:not(.btn):not(.logo),.nav a:not(.btn):not(.logo),.navlinks a{position:relative;}
+nav a:not(.btn):not(.logo):hover::after,.nav a:not(.btn):not(.logo):hover::after,.navlinks a:hover::after{width:100%;}
+/* nav logo legibility: subtle shadow so a light/gold wordmark stays readable over a light hero image */
+nav .logo img,.nav-logo img,nav a.logo img,header a.logo img,.logo>img,nav>.logo img{filter:drop-shadow(0 1px 5px rgba(0,0,0,.30))}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important;} #pl-dot,#pl-ring{display:none !important;} *{cursor:auto !important;}}
+</style>
+<script id="polish-script">
+(function(){
+  if(!window.matchMedia||!window.matchMedia("(hover:hover) and (pointer:fine)").matches) return;
+  if(window.matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+  var dot=document.createElement("div"),ring=document.createElement("div");
+  dot.id="pl-dot";ring.id="pl-ring";document.body.appendChild(dot);document.body.appendChild(ring);
+  var mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+  addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY;dot.style.transform="translate3d("+(mx-3.5)+"px,"+(my-3.5)+"px,0)";},{passive:true});
+  (function loop(){rx+=(mx-rx)*.18;ry+=(my-ry)*.18;ring.style.transform="translate3d("+(rx-17)+"px,"+(ry-17)+"px,0)";requestAnimationFrame(loop);})();
+  var hot="a,button,.btn,input,textarea,select,[onclick],[role=button],label";
+  addEventListener("mouseover",function(e){ if(e.target.closest(hot)){ring.classList.add("hot");dot.classList.add("hot");}});
+  addEventListener("mouseout",function(e){ if(e.target.closest(hot)){ring.classList.remove("hot");dot.classList.remove("hot");}});
+  addEventListener("mousedown",function(){ring.classList.add("down");});
+  addEventListener("mouseup",function(){ring.classList.remove("down");});
+  addEventListener("mouseleave",function(){dot.style.opacity=0;ring.style.opacity=0;});
+  addEventListener("mouseenter",function(){dot.style.opacity=1;ring.style.opacity=1;});
+})();
+</script>
+<!-- ===== END POLISH LAYER ===== -->
+
+</body>
+</html>
